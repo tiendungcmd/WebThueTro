@@ -11,10 +11,11 @@ namespace MotelApi.Services
         {
             _context = context;
         }
-        public async Task Create(User model)
+        public async Task<User> Create(User user)
         {
-             await _context.Users.AddAsync(model);
+             await _context.Users.AddAsync(user);
              _context.SaveChanges();
+            return user;
         }
 
         public Task<User> Delete(Guid id)
@@ -32,14 +33,14 @@ namespace MotelApi.Services
             throw new NotImplementedException();
         }
 
-        public bool Login(string username, string password)
+        public User Login(string username, string password)
         {
             var user = _context.Users.FirstOrDefault(x=>x.UserName == username);
             if (user != null && user.PasswordHash == password)
             {
-                return true;
+                return user;
             }
-            return false;
+            return null;
         }
 
         public Task<User> Update(User model)

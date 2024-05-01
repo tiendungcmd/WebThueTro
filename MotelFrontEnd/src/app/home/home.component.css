@@ -1,2 +1,14 @@
-div.container{
+div.container {}
+
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  margin-top: 10px;
+}
+
+.container {
+  background-color: white;
 }

@@ -1,13 +1,22 @@
-﻿using MotelApi.Models;
+﻿using MotelApi.DBContext;
+using MotelApi.Models;
 using MotelApi.Services.IServices;
 
 namespace MotelApi.Services
 {
     public class MotelService : IMotelService
     {
-        public Task Create(Motel model)
+        private readonly MotelContext _context;
+
+        public MotelService(MotelContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<Motel> Create(Motel model)
+        {
+            await _context.Motels.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model;
         }
 
         public Task<Motel> Delete(Guid id)

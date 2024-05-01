@@ -8,5 +8,7 @@
         public string Address { get; set; }
         public int NumberBedRoom { get; set; }
         public int NumberBathRoom { get; set; }
+        public int Acreage { get; set;}
+        public int Deposit { get; set; }
     }
 }

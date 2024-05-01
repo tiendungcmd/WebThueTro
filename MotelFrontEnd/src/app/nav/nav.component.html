@@ -2,42 +2,34 @@
   <div class="container">
     <a class="navbar-brand" routerLink="/" routerLinkActive="active"></a>
 
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link " routerLink="/trang-chu" routerLinkActive="active">Trang chủ</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dang-tin" routerLinkActive="active">Đăng tin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link "routerLink="/tin-tuc" routerLinkActive="active">Tin tức</a>
-        </li>
+    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/" routerLinkActive="active">Trang chủ</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/dang-tin" routerLinkActive="active">Đăng tin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/tin-tuc" routerLinkActive="active">Tin tức</a>
+      </li>
+    </ul>
+    <div class="dropdown" *ngIf="currentUser$ | async">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Welcome user
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item">Edit Profile</a></li>
+        <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
       </ul>
+    </div>
 
-      <div class="dropdown" *ngIf="currentUser$ | async" dropdown>
-          <a class="dropdown-toggle text-light text-decoration-none" dropdownToggle>
-              Welcome user
-          </a>
-          <div class="dropdown-menu mt-3" *dropdownMenu>
-              <a class="dropdown-item">Edit Profile</a>
-              <a class="dropdown-item" (click)="logout()">Logout</a>
-          </div>
-      </div>
-
-      <form *ngIf="!(currentUser$ | async)"  #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="d-flex" >
-        <input
-          name="username"
-          [(ngModel)]="model.username"
-          class="form-control me-2"
-          type="text"
-          placeholder="UserName" >
-        <input
-          name="password"
-          [(ngModel)]="model.password"
-          class="form-control me-2"
-          type="password"
-          placeholder="PassWord" >
-        <button class="btn btn-outline-success" type="submit">Login</button>
-      </form>
+    <form *ngIf="!(currentUser$ | async)" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="d-flex">
+      <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="UserName">
+      <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
+        placeholder="PassWord">
+      <button class="btn btn-outline-success" type="submit">Login</button>
+      <button style="margin-left: 5px;" class="btn btn-outline-success">
+        <a class="nav-link " routerLink="/register" routerLinkActive="active">Register</a>
+      </button>
+    </form>
   </div>
 </nav>

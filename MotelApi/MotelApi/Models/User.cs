@@ -7,15 +7,15 @@
 
         public string PasswordHash { get; set; }
 
-        public string KeyHash { get; set; }
+        public string? KeyHash { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public int Phone { get; set; }
+        public int? Phone { get; set; }
 
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
 
-        public Guid HistoryId { get; set; }
+        public Guid? HistoryId { get; set; }
 
     }
 }
