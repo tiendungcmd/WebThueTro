@@ -21,6 +21,10 @@ const routes: Routes = [
         path: 'dang-tin',
         component: DangTinComponent,
       },
+      {
+        path: 'tin-tuc',
+        component: DangTinComponent,
+      },
     ]
   },
   {

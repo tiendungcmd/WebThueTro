@@ -19,7 +19,7 @@ namespace MotelApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Register([FromBody] UserLogin request)
+        public async Task<ActionResult<ApiResponse<User>>> Register([FromBody] UserLogin request)
         {
             var user = new User();
             user.UserName = request.UserName;
@@ -27,7 +27,12 @@ namespace MotelApi.Controllers
             user.Id = Guid.NewGuid();
             user.IsActive = true;
             var result = await _userService.Create(user);
-            return Ok(result);
+            return Ok(new ApiResponse<User>
+            {
+                Data = result,
+                StatusCode = 200,
+                Messages = result == null ? "Register fail" : null
+            });
         }
         [HttpPost("Login")]
         public async Task<ActionResult<ApiResponse<User>>> Login([FromBody] UserLogin request)

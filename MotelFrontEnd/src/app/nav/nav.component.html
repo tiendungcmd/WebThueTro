@@ -4,7 +4,13 @@
 
     <ul class="navbar-nav me-auto mb-2 mb-md-0">
       <li class="nav-item">
-        <a class="nav-link " routerLink="/" routerLinkActive="active">Trang chủ</a>
+        <a class="nav-link "  *ngIf="!isAdmin" routerLink="/" routerLinkActive="active">Trang chủ</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link " routerLink="/tin-tuc" routerLinkActive="active">Quản lý bài đăng</a>
+      </li>
+      <li class="nav-item" *ngIf="isAdmin">
+        <a class="nav-link " routerLink="/tin-tuc" routerLinkActive="active">Quản lý tài khoản</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/dang-tin" routerLinkActive="active">Đăng tin</a>
@@ -13,7 +19,7 @@
         <a class="nav-link " routerLink="/tin-tuc" routerLinkActive="active">Tin tức</a>
       </li>
     </ul>
-    <div class="dropdown" *ngIf="currentUser$ | async">
+    <div class="dropdown" *ngIf="currentUser$ ">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Welcome user
       </button>
       <ul class="dropdown-menu">
@@ -22,7 +28,7 @@
       </ul>
     </div>
 
-    <form *ngIf="!(currentUser$ | async)" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="d-flex">
+    <form *ngIf="!(currentUser$ )" #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off" class="d-flex">
       <input name="username" [(ngModel)]="model.username" class="form-control me-2" type="text" placeholder="UserName">
       <input name="password" [(ngModel)]="model.password" class="form-control me-2" type="password"
         placeholder="PassWord">

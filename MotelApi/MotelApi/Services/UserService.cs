@@ -13,8 +13,10 @@ namespace MotelApi.Services
         }
         public async Task<User> Create(User user)
         {
-             await _context.Users.AddAsync(user);
-             _context.SaveChanges();
+            var result = _context.Users.FirstOrDefault(x => x.UserName == user.UserName);
+            if (result != null) { return null; }
+            await _context.Users.AddAsync(user);
+            _context.SaveChanges();
             return user;
         }
 
@@ -35,7 +37,7 @@ namespace MotelApi.Services
 
         public User Login(string username, string password)
         {
-            var user = _context.Users.FirstOrDefault(x=>x.UserName == username);
+            var user = _context.Users.FirstOrDefault(x => x.UserName == username);
             if (user != null && user.PasswordHash == password)
             {
                 return user;
@@ -44,6 +46,11 @@ namespace MotelApi.Services
         }
 
         public Task<User> Update(User model)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<User>> IServiceCommon<User>.GetAll()
         {
             throw new NotImplementedException();
         }

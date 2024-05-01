@@ -11,22 +11,22 @@ export class AccountService {
   constructor(private http: HttpClient) { }
   private currentUserSource = new BehaviorSubject<User | any>(null);
   currentUser$ = this.currentUserSource.asObservable();
-  login(request: any): Observable<any> {
-    return this.http.post<User>(this.baseUrl + 'auth/login', request).pipe(
-      map((response: User) => {
-        const user = response;
-        if(user){
-          localStorage.setItem('user',JSON.stringify(user));
-          this.currentUserSource.next(user);
-        }
-      })
-    );
+
+  init() {
+    return this.currentUser$;
   }
-  register(request: User) {
+
+  login(request: any): Observable<any> {
+    return this.http.post<User>(this.baseUrl + 'auth/login', request);
+  }
+  register(request: User): Observable<any> {
     return this.http.post<User>(this.baseUrl + 'auth/', request);
   }
   logout() {
-    localStorage.removeItem('user');
     this.currentUserSource.next(null);
+  }
+
+  getCurrentUser(): Observable<any> {
+    return this.currentUserSource.asObservable();
   }
 }

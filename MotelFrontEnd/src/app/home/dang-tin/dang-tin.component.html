@@ -30,9 +30,9 @@
         type="textare" placeholder="Mô tả chi tiết"></textarea>
     </div>
     <div class="mb-4 col-12 columns">
-      <input name="image" [(ngModel)]="model.image" class="form-control me-2" type="file">
+      <input type="file" (change)="handleUpload($event)">
     </div>
-    <button class="btn btn-outline-success" type="submit">Đăng tin</button>
+    <button class="btn btn-outline-success" (click)="dangTin()" >Đăng tin</button>
     <form #loginForm="ngForm" (ngSubmit)="dangTin()" autocomplete="off" class="d-flex">
 
     </form>

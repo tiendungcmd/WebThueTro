@@ -7,14 +7,10 @@ import { AccountService } from '../service/account.service';
 export const AuthGuard: CanActivateFn = (route, state) => {
   const accountService = inject(AccountService);
   const toastr = inject(ToastrService)
-
-  return accountService.currentUser$.pipe(
-    map(user=>{
-      if(user) return true;
-      else{
-        toastr.error('Bạn cần đăng nhập trước!');
-        return false;
-      }
-    })
-  )
+  const user = localStorage.getItem('user');
+  if(user) return true;
+  else{
+    toastr.error('Bạn cần đăng nhập trước!');
+    return false;
+  }
 };

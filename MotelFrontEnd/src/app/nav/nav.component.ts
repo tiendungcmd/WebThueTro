@@ -3,6 +3,7 @@ import { AccountService } from '../service/account.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { User } from '../model/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -11,22 +12,34 @@ import { User } from '../model/user';
 })
 export class NavComponent {
   model: any = {};
-  currentUser$: Observable<User | null>  = of(null);
-  constructor(private accountService: AccountService, private router: Router) { }
+  currentUser$: any;
+  isAdmin:boolean = false;
+  userName:string ="";
+  constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) { }
   ngOnInit(): void {
-    this.currentUser$ = this.accountService.currentUser$;
+    this.currentUser$ = localStorage.getItem('user');
+   if(this.currentUser$.includes('"userName":"admin"')) {
+    this.isAdmin = true;
+   }
   }
 
   login() {
-    var x = this.accountService.login(this.model).subscribe({
-      next:(value:any)=> {
-          console.log(value)
-      },
-    })
-    console.log(x);
+    this.accountService.login(this.model).subscribe(res =>{
+      if(res.success){
+        if(res.data.userName == "admin") {
+          this.isAdmin = true;
+         }
+        localStorage.setItem('user',JSON.stringify(res.data));
+        this.currentUser$ = localStorage.getItem('user');;
+      }
+
+    });
   }
 
   logout() {
+    this.currentUser$ = null;
+    this.isAdmin = false;
+    localStorage.removeItem('user');
     this.accountService.logout();
     this.router.navigateByUrl('/')
   }

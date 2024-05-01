@@ -15,7 +15,7 @@ namespace MotelApi.Services
             throw new NotImplementedException();
         }
 
-        public Task<Image> GetAll()
+        public Task<List<Image>> GetAll()
         {
             throw new NotImplementedException();
         }

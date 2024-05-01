@@ -1,9 +1,10 @@
 ﻿using MotelApi.Common;
 
-namespace MotelApi.Request
+namespace MotelApi.Response
 {
-    public class MotelModel
+    public class MotelResponse
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Descriptions { get; set; }
         public int Price { get; set; }
@@ -15,7 +16,7 @@ namespace MotelApi.Request
         public int NumberBathRoom { get; set; }
         public int Acreage { get; set; }
         public int Deposit { get; set; }
-        public SelectedFiles Images { get; set; }
+        public string[] Images { get; set; }
         public string Title { get; set; }
     }
 }
