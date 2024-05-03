@@ -17,6 +17,7 @@ namespace MotelApi.DBContext
         public DbSet<User> Users { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<MotelDetail> MotelDetails { get; set; }
+        public DbSet<UserDetail> UserDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

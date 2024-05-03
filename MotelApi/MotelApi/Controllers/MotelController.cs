@@ -11,13 +11,14 @@ namespace MotelApi.Controllers
     public class MotelController : ControllerBase
     {
         private readonly IMotelService _service;
-
-        public MotelController(IMotelService service)
+        private static IWebHostEnvironment _webHostEnvironment;
+        public MotelController(IMotelService service, IWebHostEnvironment webHostEnvironment)
         {
             _service = service;
+            _webHostEnvironment = webHostEnvironment;
         }
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<MotelResponse>>> CreateMotel([FromBody] MotelModel request)
+        public async Task<ActionResult<ApiResponse<MotelResponse>>> CreateMotel([FromBody] MotelModelRequest request)
         {
             var motel = new Motel();
             motel.Id = Guid.NewGuid();
@@ -30,8 +31,35 @@ namespace MotelApi.Controllers
             //save iamge
             var image = new Image();
             image.Id = Guid.NewGuid();
-            image.Name = request.Images.Name;
-            image.Description = request.Images.Base64;
+            image.Name = request.File.Name;
+
+            try
+            {
+                if (!Directory.Exists(_webHostEnvironment.WebRootPath + ".\\Images\\"))
+                {
+                    Directory.CreateDirectory(_webHostEnvironment.WebRootPath + ".\\Images\\");
+                }
+                var fileName = request.File.FileName;
+                var existImage = System.IO.File.Exists(_webHostEnvironment.WebRootPath + ".\\Images\\" + fileName);
+                if (existImage)
+                {
+                    fileName += "(copy)";
+                }
+                using (FileStream fileStream = System.IO.File.Create(_webHostEnvironment.WebRootPath + ".\\Images\\" + fileName))
+                {
+                    request.File.CopyTo(fileStream);
+                    fileStream.Flush();
+                    image.ImageUrl = "\\Images\\" + fileName;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            //image.Description = request.Images.Base64;
             await _service.CreateImage(image);
             //save image motel
             var imageMotel = new ImageMotel();
@@ -43,8 +71,8 @@ namespace MotelApi.Controllers
             actual.Id = result.Id;
             actual.Name = request.Name;
             actual.Descriptions = request.Descriptions;
-            actual.Price = request.Price;
-            actual.Status = request.Status;
+            actual.Price = (int)request.Price;
+            actual.Status = (Common.Status)(int)request.Status;
             actual.Title = request.Title;
             return Ok(new ApiResponse<MotelResponse>
             {
@@ -58,13 +86,13 @@ namespace MotelApi.Controllers
         public async Task<ActionResult<ApiResponse<List<MotelResponse>>>> GetMotels()
         {
             var result = new List<MotelResponse>();
-            var motels =await _service.GetAll();
+            var motels = await _service.GetAll();
             foreach (var item in motels)
             {
                 var motel = new MotelResponse();
                 motel.Id = item.Id;
                 motel.Name = item.Name;
-                motel.Status = item.Status;
+                motel.Status = (Common.Status)item.Status;
                 result.Add(motel);
             };
             return Ok(new ApiResponse<List<MotelResponse>>
@@ -72,6 +100,30 @@ namespace MotelApi.Controllers
                 Data = result,
                 StatusCode = 200,
             });
+        }
+
+        [HttpPost("upload")]
+        public ActionResult Upload([FromForm] UploadFile file)
+        {
+            try
+            {
+                if (!Directory.Exists(_webHostEnvironment.WebRootPath + ".\\Images\\"))
+                {
+                    Directory.CreateDirectory(_webHostEnvironment.WebRootPath + ".\\Images\\");
+                }
+                using (FileStream fileStream = System.IO.File.Create(_webHostEnvironment.WebRootPath + ".\\Images\\" + file.File.FileName))
+                {
+                    file.File.CopyTo(fileStream);
+                    fileStream.Flush();
+                    return Ok("\\Images\\" + file.File.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Ok("");
         }
     }
 }

@@ -11,11 +11,11 @@
 
         public string? Name { get; set; }
 
-        public int? Phone { get; set; }
-
         public bool? IsActive { get; set; }
 
         public Guid? HistoryId { get; set; }
+
+        public Guid? UserDetailId { get; set; }
 
     }
 }

@@ -8,4 +8,12 @@
             User
         }
     }
+    public static class UserContants
+    {
+        public enum Sex
+        {
+            Man,
+            Woman
+        }
+    }
 }
