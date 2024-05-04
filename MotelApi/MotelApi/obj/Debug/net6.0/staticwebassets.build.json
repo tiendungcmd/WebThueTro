@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ndHkjU75aPy1C1N5++2VLKVT/q64pM6U9fMx6jmQJ+Y=",
+  "Hash": "zvIAyVtc0kQtVKFJBM2hH1avAQW41TxCHIv8SZFMfD4=",
   "Source": "MotelApi",
   "BasePath": "_content/MotelApi",
   "Mode": "Default",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\3.png",
+      "SourceId": "MotelApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\",
+      "BasePath": "_content/MotelApi",
+      "RelativePath": "Images/3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\3.png"
+    },
     {
       "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\File",
       "SourceId": "MotelApi",
@@ -36,6 +55,25 @@
       "OriginalItemSpec": "wwwroot\\Images\\File"
     },
     {
+      "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\husky-ngao5-1024x683.jpg",
+      "SourceId": "MotelApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\",
+      "BasePath": "_content/MotelApi",
+      "RelativePath": "Images/husky-ngao5-1024x683.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\husky-ngao5-1024x683.jpg"
+    },
+    {
       "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\img13.jpg",
       "SourceId": "MotelApi",
       "SourceType": "Discovered",
@@ -53,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\img13.jpg"
+    },
+    {
+      "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\issue.png",
+      "SourceId": "MotelApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\",
+      "BasePath": "_content/MotelApi",
+      "RelativePath": "Images/issue.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\issue.png"
     },
     {
       "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\kk.png",
@@ -91,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\kk.png(copy)"
+    },
+    {
+      "Identity": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\Images\\thien.jpg",
+      "SourceId": "MotelApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\wwwroot\\",
+      "BasePath": "_content/MotelApi",
+      "RelativePath": "Images/thien.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\thien.jpg"
     }
   ]
 }

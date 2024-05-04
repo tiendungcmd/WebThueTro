@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using MotelApi.DBContext;
 using MotelApi.Models;
+using MotelApi.Response;
 using MotelApi.Services.IServices;
 
 namespace MotelApi.Services
@@ -8,10 +10,12 @@ namespace MotelApi.Services
     public class MotelService : IMotelService
     {
         private readonly MotelContext _context;
+        private readonly IMapper _mapper;
 
-        public MotelService(MotelContext context)
+        public MotelService(MotelContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
         public async Task<Motel> Create(Motel model)
         {
@@ -67,6 +71,22 @@ namespace MotelApi.Services
             {
                 var image = _context.Images.FirstOrDefault(x => x.Id == item.ImageId);
                 result.Add(image);
+            }
+            return result;
+        }
+
+        public async Task<List<MotelResponse>> GetMotels()
+        {
+            var motels = await _context.Motels.Where(x => x.Status == Common.Status.Pending).ToListAsync();
+            var result = _mapper.Map<List<MotelResponse>>(motels);
+
+            foreach (var item in result)
+            {
+                var imageMotel = _context.ImageMotels.FirstOrDefault(x => x.MotelId == item.Id);
+                if(imageMotel != null)
+                {
+                    item.Images = _context.Images.FirstOrDefault(x => x.Id == imageMotel.ImageId).ImageUrl.Replace("\\","/");
+                }
             }
             return result;
         }

@@ -7,12 +7,35 @@ import { Injectable } from '@angular/core';
 export class MotelService {
   baseUrl = 'https://localhost:7202/api/';
   constructor(private http: HttpClient) { }
-  dangTin(request:any){
+
+  getMotel(){
+
+  }
+  postMotel(request: any) {
     const formData = new FormData();
-    formData.append("username", request.name);
-    formData.append("password", request.password);
-    formData.append("iamges", request.iamges);
+    formData.append("name", request.name);
+    formData.append('file', request.file, request.file.Name);
+    formData.append('acreage', request.acreage);
+    formData.append('address', request.address);
+    formData.append('city', request.city);
+    formData.append('deposit', request.deposit);
+    formData.append('descriptions', request.descriptions);
+    formData.append('numberBathRoom', request.numberBathRoom);
+    formData.append('numberBedRoom', request.numberBedRoom);
+    formData.append('status', request.status);
+    formData.append('title', request.title);
+    formData.append('price', request.price);
+    formData.append('rate', request.rate);
+    formData.append('userName', request.userName);
 
     return this.http.post<any>(this.baseUrl + 'motel', formData);
+  }
+
+  upLoad(request: any) {
+    const formData = new FormData();
+    formData.append("Name", request.name);
+    formData.append('file', request.File, request.File.Name);
+
+    return this.http.post<any>(this.baseUrl + 'motel/upload', formData);
   }
 }

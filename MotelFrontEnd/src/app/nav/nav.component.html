@@ -7,7 +7,7 @@
         <a class="nav-link "  *ngIf="!isAdmin" routerLink="/" routerLinkActive="active">Trang chủ</a>
       </li>
       <li class="nav-item" *ngIf="isAdmin">
-        <a class="nav-link " routerLink="/tin-tuc" routerLinkActive="active">Quản lý bài đăng</a>
+        <a class="nav-link " routerLink="admin/quan-ly-bai-dang" routerLinkActive="active">Quản lý bài đăng</a>
       </li>
       <li class="nav-item" *ngIf="isAdmin">
         <a class="nav-link " routerLink="/tin-tuc" routerLinkActive="active">Quản lý tài khoản</a>
@@ -23,7 +23,7 @@
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Welcome {{userName}}
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item">Edit Profile</a></li>
+        <li><a class="dropdown-item" (click)="editProfile()">Edit Profile</a></li>
         <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
       </ul>
     </div>

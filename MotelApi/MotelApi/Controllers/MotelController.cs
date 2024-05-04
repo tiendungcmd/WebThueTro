@@ -18,7 +18,7 @@ namespace MotelApi.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<MotelResponse>>> CreateMotel([FromBody] MotelModelRequest request)
+        public async Task<ActionResult<ApiResponse<MotelResponse>>> CreateMotel([FromForm] MotelModelRequest request)
         {
             var motel = new Motel();
             motel.Id = Guid.NewGuid();
@@ -27,11 +27,12 @@ namespace MotelApi.Controllers
             motel.Price = request.Price;
             motel.Status = request.Status;
             motel.Title = request.Title;
+            motel.Rate = request.Rate;
             var result = await _service.Create(motel);
             //save iamge
             var image = new Image();
             image.Id = Guid.NewGuid();
-            image.Name = request.File.Name;
+            image.Name = request.UserName;
 
             try
             {
@@ -41,6 +42,8 @@ namespace MotelApi.Controllers
                 }
                 var fileName = request.File.FileName;
                 var existImage = System.IO.File.Exists(_webHostEnvironment.WebRootPath + ".\\Images\\" + fileName);
+               // var acb =   System.IO.File.(_webHostEnvironment.WebRootPath + ".\\Images\\");
+               
                 if (existImage)
                 {
                     fileName += "(copy)";
@@ -86,7 +89,7 @@ namespace MotelApi.Controllers
         public async Task<ActionResult<ApiResponse<List<MotelResponse>>>> GetMotels()
         {
             var result = new List<MotelResponse>();
-            var motels = await _service.GetAll();
+            var motels = await _service.GetMotels();
             foreach (var item in motels)
             {
                 var motel = new MotelResponse();
@@ -97,7 +100,7 @@ namespace MotelApi.Controllers
             };
             return Ok(new ApiResponse<List<MotelResponse>>
             {
-                Data = result,
+                Data = motels,
                 StatusCode = 200,
             });
         }
@@ -124,6 +127,15 @@ namespace MotelApi.Controllers
             }
 
             return Ok("");
+        }
+
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "Images", $"kk.png");
+            var imageFileStream = System.IO.File.OpenRead(path);
+            return File(imageFileStream, "image/jpeg");
         }
     }
 }

@@ -5,6 +5,8 @@ import { AdminComponent } from './admin/admin.component';
 import { DangTinComponent } from './home/dang-tin/dang-tin.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { ProfileComponent } from './home/profile/profile.component';
+import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dang.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,10 @@ const routes: Routes = [
         path: 'tin-tuc',
         component: DangTinComponent,
       },
+      {
+        path: 'trang-ca-nhan',
+        component: ProfileComponent,
+      }
     ]
   },
   {
@@ -34,6 +40,12 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
+    children:[
+      {
+        path: 'quan-ly-bai-dang',
+        component: QuanLyBaiDangComponent,
+      }
+    ]
   }
 ];
 

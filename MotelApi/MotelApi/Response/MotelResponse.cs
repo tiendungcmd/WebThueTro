@@ -16,7 +16,7 @@ namespace MotelApi.Response
         public int NumberBathRoom { get; set; }
         public int Acreage { get; set; }
         public int Deposit { get; set; }
-        public string[] Images { get; set; }
+        public string Images { get; set; }
         public string Title { get; set; }
     }
 }

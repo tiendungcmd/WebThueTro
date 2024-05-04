@@ -68,3 +68,5 @@ D:\Code\WebThueTro\MotelApi\MotelApi\bin\Debug\net6.0\runtimes\win\lib\netstanda
 D:\Code\WebThueTro\MotelApi\MotelApi\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Code\WebThueTro\MotelApi\MotelApi\obj\Debug\net6.0\MotelApi.sourcelink.json
 D:\Code\WebThueTro\MotelApi\MotelApi\bin\Debug\net6.0\MotelApi.staticwebassets.runtime.json
+D:\Code\WebThueTro\MotelApi\MotelApi\bin\Debug\net6.0\AutoMapper.dll
+D:\Code\WebThueTro\MotelApi\MotelApi\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -15,6 +15,8 @@ import { BannerComponent } from './banner/banner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountService } from './service/account.service';
 import { appInitializer } from './helpers/appInitializer';
+import { ProfileComponent } from './home/profile/profile.component';
+import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dang.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { appInitializer } from './helpers/appInitializer';
     NavComponent,
     DangTinComponent,
     RegisterComponent,
-    BannerComponent
+    BannerComponent,
+    ProfileComponent,
+    QuanLyBaiDangComponent
   ],
   imports: [
     BrowserModule,

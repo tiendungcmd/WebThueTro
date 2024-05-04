@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MotelApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0d61ae5a33981aa8f722db467d71f48f3f85b57")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aee6930f4c9fa44d7d90388c6c82bc2efe7fd14a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MotelApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MotelApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

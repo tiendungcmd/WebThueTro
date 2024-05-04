@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "nk3g+Q4R7D7CjQ6/3IH/MN7VAZzaqwv0qicpavHKsZJviBCcue7/zZxUDc7H7pHBS5cB+D8NWIDLBBw2YPADMw==",
+  "dgSpecHash": "yW0+JhuxWha7iDymkBlZkoRMEK2t5jRc5NYJIAfpyP9AbGXIEyfYj7cPTjolla5Y2835FG159hq5MoHuwm3+kg==",
   "success": true,
   "projectFilePath": "D:\\Code\\WebThueTro\\MotelApi\\MotelApi\\MotelApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.7\\microsoft.data.sqlclient.2.1.7.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.29\\microsoft.entityframeworkcore.6.0.29.nupkg.sha512",

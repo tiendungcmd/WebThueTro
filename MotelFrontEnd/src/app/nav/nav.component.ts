@@ -14,7 +14,7 @@ export class NavComponent {
   model: any = {};
   currentUser$: any;
   isAdmin:boolean = false;
-  userName:string ="";
+  userName:string |any;
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.currentUser$ = localStorage.getItem('user');
@@ -30,10 +30,12 @@ export class NavComponent {
           this.isAdmin = true;
          }
         localStorage.setItem('user',JSON.stringify(res.data));
+        this.userName = res.data.userName;
         this.currentUser$ = localStorage.getItem('user');;
       }
-
     });
+
+
   }
 
   logout() {
@@ -42,5 +44,9 @@ export class NavComponent {
     localStorage.removeItem('user');
     this.accountService.logout();
     this.router.navigateByUrl('/')
+  }
+
+  editProfile(){
+    this.router.navigateByUrl('trang-ca-nhan')
   }
 }

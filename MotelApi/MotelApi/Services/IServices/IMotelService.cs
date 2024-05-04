@@ -1,4 +1,5 @@
 ﻿using MotelApi.Models;
+using MotelApi.Response;
 
 namespace MotelApi.Services.IServices
 {
@@ -8,5 +9,7 @@ namespace MotelApi.Services.IServices
 
         Task<ImageMotel> ImageMotel(ImageMotel model);
         Task<List<Image>> GetImages(Guid id);
+
+        Task<List<MotelResponse>> GetMotels();
     }
 }

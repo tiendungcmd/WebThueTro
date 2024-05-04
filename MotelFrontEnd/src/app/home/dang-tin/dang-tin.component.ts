@@ -17,10 +17,13 @@ export class DangTinComponent implements OnInit {
     // this.model.images = [];
   }
 
-  dangTin() {
-    this.model.images = this.file.File;
+  createMotel() {
+    this.model.file = this.file.File;
     this.model.status = 2;
-    this.motelService.dangTin(this.model).subscribe(res => {
+    this.model.price = 0;
+    this.model.rate = 1;
+    this.model.userName = localStorage.getItem('user["userName"]');
+    this.motelService.postMotel(this.model).subscribe(res => {
       console.log(res.data)
       if(res.success){
         this.router.navigateByUrl('/')
