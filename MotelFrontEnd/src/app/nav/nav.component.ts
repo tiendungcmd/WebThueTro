@@ -18,9 +18,10 @@ export class NavComponent {
   constructor(private accountService: AccountService, private router: Router, private toastr: ToastrService) { }
   ngOnInit(): void {
     this.currentUser$ = localStorage.getItem('user');
-   if(this.currentUser$.includes('"userName":"admin"')) {
+   if(this.currentUser$.includes('admin')) {
     this.isAdmin = true;
    }
+   this.userName = localStorage.getItem('user');
   }
 
   login() {
@@ -29,7 +30,7 @@ export class NavComponent {
         if(res.data.userName == "admin") {
           this.isAdmin = true;
          }
-        localStorage.setItem('user',JSON.stringify(res.data));
+        localStorage.setItem('user',res.data.userName);
         this.userName = res.data.userName;
         this.currentUser$ = localStorage.getItem('user');;
       }

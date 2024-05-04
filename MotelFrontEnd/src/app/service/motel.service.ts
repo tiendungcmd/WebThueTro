@@ -9,7 +9,7 @@ export class MotelService {
   constructor(private http: HttpClient) { }
 
   getMotel(){
-
+    return this.http.get<any>(this.baseUrl + 'motel');
   }
   postMotel(request: any) {
     const formData = new FormData();
@@ -27,6 +27,7 @@ export class MotelService {
     formData.append('price', request.price);
     formData.append('rate', request.rate);
     formData.append('userName', request.userName);
+    formData.append('reason', request.reason);
 
     return this.http.post<any>(this.baseUrl + 'motel', formData);
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MotelService } from '../../service/motel.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dang-tin',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class DangTinComponent implements OnInit {
   model: any = {};
   file: any;
-  constructor(private motelService: MotelService, private router: Router) {
+  constructor(private motelService: MotelService,private toastrService: ToastrService, private router: Router) {
 
   }
   ngOnInit(): void {
@@ -19,13 +20,15 @@ export class DangTinComponent implements OnInit {
 
   createMotel() {
     this.model.file = this.file.File;
-    this.model.status = 2;
+    this.model.status = 2; //pending
     this.model.price = 0;
     this.model.rate = 1;
-    this.model.userName = localStorage.getItem('user["userName"]');
+    this.model.reason = "";
+    this.model.userName = localStorage.getItem('user');
     this.motelService.postMotel(this.model).subscribe(res => {
       console.log(res.data)
       if(res.success){
+        this.toastrService.success("Tạo bài đăng thành công!")
         this.router.navigateByUrl('/')
       }
     })

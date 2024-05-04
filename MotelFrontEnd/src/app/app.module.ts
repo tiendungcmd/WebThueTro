@@ -17,6 +17,7 @@ import { AccountService } from './service/account.service';
 import { appInitializer } from './helpers/appInitializer';
 import { ProfileComponent } from './home/profile/profile.component';
 import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dang.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dan
     HttpClientModule,
     FormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TableModule
   ],
   providers: [
     {
