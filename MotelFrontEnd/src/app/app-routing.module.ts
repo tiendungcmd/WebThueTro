@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { ProfileComponent } from './home/profile/profile.component';
 import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dang.component';
+import { BaiDangComponent } from './home/bai-dang/bai-dang.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'trang-ca-nhan',
         component: ProfileComponent,
+      },
+      {
+        path: 'bai-dang/:id',
+        component: BaiDangComponent,
       }
     ]
   },

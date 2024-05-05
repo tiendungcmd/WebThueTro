@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
+import { MotelService } from '../service/motel.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,10 @@ import { CarouselModule } from 'primeng/carousel';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  motels:any;
+  constructor(private motelService: MotelService) {
+
+  }
   images: silde[] = [];
   ngOnInit(): void {
     this.images = [{
@@ -21,6 +26,12 @@ export class HomeComponent implements OnInit {
       imgSrc:'assets/image3.jpg',
       imgAlt:'image 3'
     }]
+
+    this.motelService.getMotel().subscribe(res=>{
+      if(res.success){
+        this.motels = res.data;
+      }
+    });
   }
 }
 interface silde {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class MotelService {
   baseUrl = 'https://localhost:7202/api/';
   constructor(private http: HttpClient) { }
 
-  getMotel(){
+  getMotel() {
     return this.http.get<any>(this.baseUrl + 'motel');
   }
   postMotel(request: any) {
@@ -39,4 +40,21 @@ export class MotelService {
 
     return this.http.post<any>(this.baseUrl + 'motel/upload', formData);
   }
+
+  approve(id: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'motel/approve?id=' + id, "");
+  }
+
+  reject(motelReject: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'motel/reject', motelReject);
+  }
+
+  deleteMotel(id: any): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + 'motel?id=' + id);
+  }
+
+  getMotelById(id:any){
+    return this.http.get<any>(this.baseUrl + 'motel/' + id);
+  }
+
 }

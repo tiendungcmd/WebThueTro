@@ -18,6 +18,7 @@ import { appInitializer } from './helpers/appInitializer';
 import { ProfileComponent } from './home/profile/profile.component';
 import { QuanLyBaiDangComponent } from './admin/quan-ly-bai-dang/quan-ly-bai-dang.component';
 import { TableModule } from 'primeng/table';
+import { BaiDangComponent } from './home/bai-dang/bai-dang.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TableModule } from 'primeng/table';
     RegisterComponent,
     BannerComponent,
     ProfileComponent,
-    QuanLyBaiDangComponent
+    QuanLyBaiDangComponent,
+    BaiDangComponent
   ],
   imports: [
     BrowserModule,
